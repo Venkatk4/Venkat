@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+</head>
+
+<body>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Roll Number</td>
+                <td>Attendance</td>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <tr id="tableRowTemplate">
+                <td>Name</td>
+                <td>1</td>
+                <td>true</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        let tableBody = document.getElementById('tableBody');
+        let tableRowTemplate = document.getElementById('tableRowTemplate');
+        let classArray = [
+            { name: "Pavan", Roll: 1, attendance: true }, 
+            { name: "Nag",  Roll: 2, attendance: false }, 
+            { name: "Siri", Roll: 3, attendance: true },  
+            { name: "Keerthi", Roll: 4, attendance: false },
+        ];
+
+     
+        tableRowTemplate.style.display = 'none';
+
+        for (let i = 0; i < classArray.length; i++) {
+            let newRow = tableRowTemplate.cloneNode(true);
+            newRow.style.display = '';
+            newRow.querySelector('td:nth-child(1)').textContent = classArray[i].name;
+            newRow.querySelector('td:nth-child(2)').textContent = classArray[i].Roll;
+            newRow.querySelector('td:nth-child(3)').textContent = classArray[i].attendance;
+            tableBody.appendChild(newRow);
+        }
+    </script>
+    <style>
+              table{
+                border-collapse: collapse;
+    
+            }
+    </style>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="searchText" type="text" />
+    <input id="replace" type="text" />
+    <button id="replaceButton">Replace</button>
+    
+    <br />
+    <textarea id="textArea" cols="30" rows="10">
+        JavaScript is a scripting language that enables you to create dynamically updating content, control multimedia, animate images, and pretty much everything else. 
+        (Okay, not everything, but it is amazing what you can achieve with a few lines of JavaScript code.)
+    </textarea>
+    
+    <script>
+        let input = document.getElementById("searchText");
+        let replace = document.getElementById("replace");
+        let replaceButton = document.getElementById("replaceButton");
+        let textArea = document.getElementById("textArea");
+
+        replaceButton.addEventListener("click", function () {
+            let searchValue = input.value;
+            let replaceValue = replace.value;
+            let text = textArea.value;
+
+            const replaceTextInString = (text, search, replaceWith) => {
+                return text.replace(new RegExp(search, 'g'), replaceWith);
+            };
+
+            let modifiedText = replaceTextInString(text, searchValue, replaceValue);
+            textArea.value = modifiedText;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Form</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Bank Form</h2>
+    <label for="newtodo">Enter Amount:</label>
+    <input id="newtodo" type="text" placeholder=" "/>
+    <button onclick="save('Credit')">Credit</button>
+    <button onclick="save('Debit')">Debit</button>
+    <ul id="todo"></ul>
+
+    <table border="1" style="width:50%">
+        <tr>
+            <th>Amount</th>
+            <th>Credit</th>
+            <th>Debit</th>
+        </tr>
+    </table>
+
+    <script>
+        let todo = document.getElementById("todo");
+        let inptElem = document.getElementById("newtodo");
+
+        function save(transactionType) {
+            if (inptElem.value === "") {
+                return;
+            }
+
+            let table = document.querySelector("table");
+            let row = table.insertRow(-1);
+
+            let cell1 = row.insertCell(0);
+            cell1.innerHTML = inptElem.value;
+
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+
+            if (transactionType === "Credit") {
+                cell2.innerHTML = inptElem.value;
+                cell3.innerHTML = "-";
+            } else if (transactionType === "Debit") {
+                cell2.innerHTML = "-";
+                cell3.innerHTML = inptElem.value;
+            }
+
+            inptElem.value = "";
+        }
+    </script>
+</body>
+</html>
